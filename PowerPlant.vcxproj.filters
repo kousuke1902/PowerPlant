@@ -812,5 +812,11 @@
     <ClInclude Include="plant_parameters.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="battery_parameters.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="particle_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
