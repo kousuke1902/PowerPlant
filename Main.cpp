@@ -1,5 +1,6 @@
 ﻿#include <Siv3D.hpp>
 #include "plant_parameters.hpp"
+#include "battery_parameters.hpp"
 
 
 void Main()
@@ -8,6 +9,8 @@ void Main()
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
 
 	PlantParameters& plant = PlantParameters::getInstance();
+	BatteryParameters& battery = BatteryParameters::getInstance();
+
 	plant.getMoisture();
 
 	while (System::Update())
