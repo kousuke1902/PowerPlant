@@ -6,6 +6,7 @@
 void Main()
 {
 	// 背景の色を設定する
+	Window::Resize(1200, 720);
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
 
 	PlantParameters& plant = PlantParameters::getInstance();

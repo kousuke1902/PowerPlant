@@ -11,6 +11,10 @@ private:
 	ActionSystem() = default; // コンストラクタ
 	~ActionSystem() = default; // デストラクタ
 
+	PlantParameters& plant = PlantParameters::getInstance(); // 植物クラスへのアクセス 
+	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
+	PointParameters& point = PointParameters::getInstance(); // 使用ポイントクラスへのアクセス
+
 public:
 
 	ActionSystem(const ActionSystem&) = delete; // コピーコンストラクタを削除指定
@@ -30,10 +34,10 @@ public:
 	int Watering()
 	{
 		// ポイント消費可非
-		if (PointParameters::getInstance().getPoint() > 10)
+		if (point.getPoint() > 10)
 		{
-			PointParameters::getInstance().addPoint(-10);
-			PlantParameters::getInstance().addMoisture(10);
+			point.addPoint(-10);
+			plant.addMoisture(10);
 		}
 		return 0;
 	}
@@ -42,10 +46,10 @@ public:
 	int Fertilize()
 	{
 		// ポイント消費可非
-		if (PointParameters::getInstance().getPoint() > 10)
+		if (point.getPoint() > 10)
 		{
-			PointParameters::getInstance().addPoint(-10);
-			PlantParameters::getInstance().addFertilizer(10);
+			point.addPoint(-10);
+			plant.addFertilizer(10);
 		}
 		return 0;
 	}
@@ -54,10 +58,10 @@ public:
 	int PodUpgrade()
 	{
 		// ポイント消費可非
-		if (PointParameters::getInstance().getPoint() > 10)
+		if (point.getPoint() > 10)
 		{
-			PointParameters::getInstance().addPoint(-10);
-			PlantParameters::getInstance().addPodLevel();
+			point.addPoint(-10);
+			plant.addPodLevel();
 		}
 		return 0;
 	}
@@ -66,10 +70,10 @@ public:
 	int PlantUpgrafe()
 	{
 		// ポイント消費可非
-		if (PointParameters::getInstance().getPoint() > 10)
+		if (point.getPoint() > 10)
 		{
-			PointParameters::getInstance().addPoint(-10);
-			PlantParameters::getInstance().addPlantLevel();
+			point.addPoint(-10);
+			plant.addPlantLevel();
 		}
 		return 0;
 	}
@@ -78,7 +82,7 @@ public:
 	int TouchPlant()
 	{
 		// 植物の瞬間発電量を充電する
-		BatteryParameters::getInstance().addChargingPower(PlantParameters::getInstance().getMomentPower());
+		battery.addChargingPower(plant.getMomentPower());
 		return 0;
 	}
 
@@ -88,10 +92,10 @@ public:
 	int MaxBatteryStockUpgrade()
 	{
 		// ポイント消費可非
-		if (PointParameters::getInstance().getPoint() > 10)
+		if (point.getPoint() > 10)
 		{
-			PointParameters::getInstance().addPoint(-10);
-			BatteryParameters::getInstance().addMaxBatteryStock();
+			point.addPoint(-10);
+			battery.addMaxBatteryStock();
 		}
 		return 0;
 	}
