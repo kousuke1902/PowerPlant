@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <Siv3D.hpp>
 
+// 電池の各種パラメータクラス
 class BatteryParameters final
 {
 
@@ -10,7 +11,7 @@ private:
 	~BatteryParameters() = default; // デストラクタ
 
 	// 各種パラメータ
-	double charging_power; // 充電量
+	int charging_power; // 充電量
 	int battery_stock; // 電池ストック
 	int battery_max_stock; // 最大電池ストック
 
@@ -25,20 +26,20 @@ public:
 	// インスタンスを取得
 	static BatteryParameters& getInstance()
 	{
-		static BatteryParameters inst; //privateのコンストラクタ
+		static BatteryParameters inst; // privateのコンストラクタ
 		return inst;
 	}
 
 	// 充電量
 	// 充電量を入力する
-	int setChargingPower(double x)
+	int setChargingPower(int x)
 	{
 		charging_power = x;
 		return 0;
 	}
 
 	// 充電量を加算する
-	int addChargingPower(double x)
+	int addChargingPower(int x)
 	{
 		charging_power += x;
 		return 0;
@@ -80,9 +81,9 @@ public:
 	}
 
 	// 最大電池ストックを加算する
-	int addMaxBatteryStock(int x)
+	int addMaxBatteryStock()
 	{
-		battery_max_stock += x;
+		battery_max_stock ++;
 		return 0;
 	}
 

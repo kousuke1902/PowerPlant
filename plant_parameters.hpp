@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <Siv3D.hpp>
 
-// 植物の各種パラメータのシステム群
+// 植物の各種パラメータクラス
 class PlantParameters final
 {
 
@@ -29,7 +29,7 @@ public:
 	// インスタンスを取得
 	static PlantParameters& getInstance()
 	{
-		static PlantParameters inst; //privateのコンストラクタ
+		static PlantParameters inst; // privateのコンストラクタ
 		return inst;
 	}
 

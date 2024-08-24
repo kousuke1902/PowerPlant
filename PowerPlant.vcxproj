@@ -325,9 +325,11 @@
     <Xml Include="App\example\xml\test.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="action_system.hpp" />
     <ClInclude Include="battery_parameters.hpp" />
     <ClInclude Include="particle_system.hpp" />
     <ClInclude Include="plant_parameters.hpp" />
+    <ClInclude Include="point_parameters.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
