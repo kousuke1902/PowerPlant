@@ -13,7 +13,7 @@ private:
 
 	PlantParameters& plant = PlantParameters::getInstance(); // 植物クラスへのアクセス 
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
-	PointParameters& point = PointParameters::getInstance(); // 使用ポイントクラスへのアクセス
+	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
 
 public:
 
@@ -33,48 +33,32 @@ public:
 	// 水やりを行う
 	int Watering()
 	{
-		// ポイント消費可非
-		if (point.getPoint() > 10)
-		{
-			point.addPoint(-10);
-			plant.addMoisture(10);
-		}
+		point.addPoint(-10);
+		plant.addMoisture(10);
 		return 0;
 	}
 
 	// 肥料を与える
 	int Fertilize()
 	{
-		// ポイント消費可非
-		if (point.getPoint() > 10)
-		{
-			point.addPoint(-10);
-			plant.addFertilizer(10);
-		}
+		point.addPoint(-10);
+		plant.addFertilizer(10);
 		return 0;
 	}
 
 	// ポッドのレベルを上げる
 	int PodUpgrade()
 	{
-		// ポイント消費可非
-		if (point.getPoint() > 10)
-		{
-			point.addPoint(-10);
-			plant.addPodLevel();
-		}
+		point.addPoint(-10);
+		plant.addPodLevel();
 		return 0;
 	}
 
 	// 植物レベルを上げる
 	int PlantUpgrafe()
 	{
-		// ポイント消費可非
-		if (point.getPoint() > 10)
-		{
-			point.addPoint(-10);
-			plant.addPlantLevel();
-		}
+		point.addPoint(-10);
+		plant.addPlantLevel();
 		return 0;
 	}
 
@@ -91,12 +75,8 @@ public:
 	// 最大電池ストックを引き上げる
 	int MaxBatteryStockUpgrade()
 	{
-		// ポイント消費可非
-		if (point.getPoint() > 10)
-		{
-			point.addPoint(-10);
-			battery.addMaxBatteryStock();
-		}
+		point.addPoint(-10);
+		battery.addMaxBatteryStock();
 		return 0;
 	}
 
