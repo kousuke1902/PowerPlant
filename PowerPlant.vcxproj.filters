@@ -824,5 +824,8 @@
     <ClInclude Include="action_system.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="draw_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

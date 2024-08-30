@@ -1,6 +1,8 @@
 ﻿#include <Siv3D.hpp>
 #include "plant_parameters.hpp"
 #include "battery_parameters.hpp"
+#include "action_system.hpp"
+#include "particle_system.hpp"
 
 
 void Main()
@@ -11,8 +13,7 @@ void Main()
 
 	PlantParameters& plant = PlantParameters::getInstance();
 	BatteryParameters& battery = BatteryParameters::getInstance();
-
-	plant.getMoisture();
+	ActionSystem& action = ActionSystem::getInstance();
 
 	while (System::Update())
 	{

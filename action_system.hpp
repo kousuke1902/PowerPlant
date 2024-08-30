@@ -99,4 +99,13 @@ public:
 		}
 		return 0;
 	}
+
+	//電池を出荷する
+	int BatteryShipping()
+	{
+		point.addPoint(battery.getBatteryStock() * 100);
+		battery.setBatteryStock(0);
+		return 0;
+	}
+
 };
