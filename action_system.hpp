@@ -33,7 +33,7 @@ public:
 	// 水やりを行う
 	int Watering()
 	{
-		point.addPoint(-10);
+		
 		plant.addMoisture(10);
 		return 0;
 	}

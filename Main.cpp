@@ -2,6 +2,7 @@
 #include "plant_parameters.hpp"
 #include "battery_parameters.hpp"
 #include "action_system.hpp"
+#include "draw_system.hpp"
 #include "particle_system.hpp"
 
 
@@ -14,10 +15,13 @@ void Main()
 	PlantParameters& plant = PlantParameters::getInstance();
 	BatteryParameters& battery = BatteryParameters::getInstance();
 	ActionSystem& action = ActionSystem::getInstance();
+	DrawSystem& draw = DrawSystem::getInstance();
+
+	draw.Startup();
 
 	while (System::Update())
 	{
-
+		draw.Update();
 	}
 }
 
