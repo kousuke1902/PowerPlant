@@ -15,6 +15,9 @@ private:
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
 	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
 
+	RoundRect plant_colision; // 植物当たり判定
+
+
 public:
 
 	ActionSystem(const ActionSystem&) = delete; // コピーコンストラクタを削除指定
@@ -30,10 +33,10 @@ public:
 	}
 
 	// 植物関連
-	// 水やりを行う
+// 水やりを行う
 	int Watering()
 	{
-		
+
 		plant.addMoisture(10);
 		return 0;
 	}
@@ -65,8 +68,14 @@ public:
 	// 植物をタッチする
 	int TouchPlant()
 	{
-		// 植物の瞬間発電量を充電する
-		battery.addChargingPower(plant.getMomentPower());
+		plant_colision.draw();
+		if (plant_colision.mouseOver() && MouseL.down())
+		{
+			// 植物の瞬間発電量を充電する
+			battery.addChargingPower(plant.getMomentPower());
+
+		}
+
 		return 0;
 	}
 
@@ -80,11 +89,27 @@ public:
 		return 0;
 	}
 
-	//電池を出荷する
+	// 電池を出荷する
 	int BatteryShipping()
 	{
 		point.addPoint(battery.getBatteryStock() * 100);
 		battery.setBatteryStock(0);
+		return 0;
+	}
+
+	// システム処理
+	// 初期化
+	int Startup()
+	{
+		plant_colision = RoundRect{ Arg::center(300.0, 600.0), 100.0, 500.0, 10 };
+		plant.setMomentPower(10);
+		return 0;
+	}
+
+	// 更新
+	int Update()
+	{
+		TouchPlant();
 		return 0;
 	}
 

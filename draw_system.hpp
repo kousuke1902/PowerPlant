@@ -19,6 +19,7 @@ private:
 	RoundRect waterring_button; // 水やりボタン
 
 
+
 	// 各種表示
 	// ポイント表示
 	int PointView()
@@ -56,6 +57,7 @@ private:
 
 		return 0;
 	}
+
 
 public:
 

@@ -17,10 +17,12 @@ void Main()
 	ActionSystem& action = ActionSystem::getInstance();
 	DrawSystem& draw = DrawSystem::getInstance();
 
+	action.Startup();
 	draw.Startup();
 
 	while (System::Update())
 	{
+		action.Update();
 		draw.Update();
 	}
 }
