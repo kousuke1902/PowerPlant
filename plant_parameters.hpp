@@ -34,6 +34,7 @@ public:
 	}
 
 	// 土壌
+
 	// 土壌の湿り気数値を入力する
 	int setMoisture(int x)
 	{
@@ -55,6 +56,7 @@ public:
 	}
 
 	// 肥料
+
 	// 肥料値を入力する
 	int setFertilizer(int x)
 	{
@@ -97,6 +99,7 @@ public:
 	}
 
 	// ポッドレベル
+
 	// ポッドレベルを入力する
 	int setPodLevel(int x)
 	{
@@ -118,6 +121,7 @@ public:
 	}
 
 	// 植物レベル
+
 	// 植物レベルを入力する
 	int setPlantLevel(int x)
 	{
@@ -139,6 +143,7 @@ public:
 	}
 
 	// 時間発電量
+
 	// 時間発電量を入力する
 	int setTimePower(int x)
 	{
@@ -160,6 +165,7 @@ public:
 	}
 
 	// 瞬間発電量(タッチ)
+
 	// 瞬間発電量を入力する
 	int setMomentPower(int x)
 	{
@@ -180,6 +186,12 @@ public:
 		return moment_power;
 	}
 
+	//初期化処理
+	int Startup()
+	{
+		setMomentPower(10);
+		return 0;
+	}
 
 };
 

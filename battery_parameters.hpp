@@ -31,6 +31,7 @@ public:
 	}
 
 	// 充電量
+
 	// 充電量を入力する
 	int setChargingPower(int x)
 	{
@@ -52,6 +53,7 @@ public:
 	}
 
 	// 電池ストック
+
 	// 電池ストックを入力する
 	int setBatteryStock(int x)
 	{
@@ -73,6 +75,7 @@ public:
 	}
 
 	// 最大電池ストック
+
 	// 最大電池ストックを入力する
 	int setMaxBatteryStock(int x)
 	{
@@ -91,6 +94,18 @@ public:
 	int getMaxBatteryStock() const
 	{
 		return battery_max_stock;
+	}
+
+	// システム処理
+	
+	// 初期化
+	int Startup()
+	{
+		setChargingPower(0);
+		setBatteryStock(0);
+		setMaxBatteryStock(1);
+
+		return 0;
 	}
 
 };

@@ -15,7 +15,7 @@ private:
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
 	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
 
-	RoundRect plant_colision; // 植物当たり判定
+	RoundRect plant_colision{ Arg::center(300.0, 600.0), 100.0, 500.0, 10 }; // 植物当たり判定
 
 
 public:
@@ -33,7 +33,8 @@ public:
 	}
 
 	// 植物関連
-// 水やりを行う
+
+	// 水やりを行う
 	int Watering()
 	{
 
@@ -81,6 +82,7 @@ public:
 
 
 	// 電池関連
+
 	// 最大電池ストックを引き上げる
 	int MaxBatteryStockUpgrade()
 	{
@@ -98,13 +100,6 @@ public:
 	}
 
 	// システム処理
-	// 初期化
-	int Startup()
-	{
-		plant_colision = RoundRect{ Arg::center(300.0, 600.0), 100.0, 500.0, 10 };
-		plant.setMomentPower(10);
-		return 0;
-	}
 
 	// 更新
 	int Update()

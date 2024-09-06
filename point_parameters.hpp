@@ -28,6 +28,7 @@ public:
 	}
 
 	// 使用ポイント
+
 	// 使用ポイントを入力する
 	int setPoint(int x)
 	{
