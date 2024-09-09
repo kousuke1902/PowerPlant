@@ -14,11 +14,13 @@ void Main()
 
 	PlantParameters& plant = PlantParameters::getInstance();
 	BatteryParameters& battery = BatteryParameters::getInstance();
+	PointParameters& point = PointParameters::getInstance();
 	ActionSystem& action = ActionSystem::getInstance();
 	DrawSystem& draw = DrawSystem::getInstance();
 
 	battery.Startup();
 	plant.Startup();
+	point.Startup();
 
 	while (System::Update())
 	{

@@ -15,7 +15,7 @@ private:
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
 	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
 
-	RoundRect plant_colision{ Arg::center(300.0, 600.0), 100.0, 500.0, 10 }; // 植物当たり判定
+
 
 
 public:
@@ -53,7 +53,6 @@ public:
 	// ポッドのレベルを上げる
 	int PodUpgrade()
 	{
-		point.addPoint(-10);
 		plant.addPodLevel();
 		return 0;
 	}
@@ -61,7 +60,6 @@ public:
 	// 植物レベルを上げる
 	int PlantUpgrafe()
 	{
-		point.addPoint(-10);
 		plant.addPlantLevel();
 		return 0;
 	}
@@ -69,13 +67,10 @@ public:
 	// 植物をタッチする
 	int TouchPlant()
 	{
-		plant_colision.draw();
-		if (plant_colision.mouseOver() && MouseL.down())
-		{
-			// 植物の瞬間発電量を充電する
-			battery.addChargingPower(plant.getMomentPower());
+		// 植物の瞬間発電量を充電する
+		battery.addChargingPower(plant.getMomentPower());
 
-		}
+		
 
 		return 0;
 	}
@@ -86,7 +81,6 @@ public:
 	// 最大電池ストックを引き上げる
 	int MaxBatteryStockUpgrade()
 	{
-		point.addPoint(-10);
 		battery.addMaxBatteryStock();
 		return 0;
 	}
@@ -94,7 +88,6 @@ public:
 	// 電池を出荷する
 	int BatteryShipping()
 	{
-		point.addPoint(battery.getBatteryStock() * 100);
 		battery.setBatteryStock(0);
 		return 0;
 	}
