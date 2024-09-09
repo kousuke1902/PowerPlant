@@ -23,8 +23,10 @@ private:
 	Font battery_stock_text{ FontMethod::MSDF, 60 }; // 電池ストック表記
 	Font max_battery_stock_text{ FontMethod::MSDF, 60 }; // 最大電池ストック表記
 	RoundRect waterring_button{ Arg::center(400.0, 200.0), _BUTTON_SIZE_ , 5.0 }; // 水やりボタン
-
-
+	RoundRect fertilizer_button{ Arg::center(400.0, 300.0), _BUTTON_SIZE_ , 5.0 }; // 肥料ボタン
+	RoundRect pod_upgrade_button{ Arg::center(400.0, 400.0), _BUTTON_SIZE_ , 5.0 }; // ポッドアップグレードボタン
+	RoundRect plant_upgrade_button{ Arg::center(400.0, 500.0), _BUTTON_SIZE_ , 5.0 }; // プラントアップグレードボタン
+	RoundRect max_battery_stock_upgrade_button{ Arg::center(400.0, 600.0), _BUTTON_SIZE_ , 5.0 }; // 最大バッテリーアップグレードボタン
 
 	// 各種表示
 	
@@ -56,6 +58,8 @@ private:
 		return 0;
 	}
 
+	// 
+
 	// 各種ボタン
 
 	// 水やり
@@ -86,7 +90,118 @@ private:
 		return 0;
 	}
 
-	//
+	// 肥料
+	int FertilizerButton()
+	{
+		// 利用可能確認
+		if (point.getPoint() > 10)
+		{
+			// 明るく表示 使用できることを提示
+			fertilizer_button.draw(Palette::Skyblue);
+
+			//ボタンをマウス左クリック
+			if (fertilizer_button.mouseOver() && MouseL.down())
+			{
+				point.addPoint(-10);
+				action.Fertilize();
+			}
+
+		}
+
+
+		else
+		{
+			// 暗く表示 使用出来ないことの提示
+			fertilizer_button.draw(Palette::Lightgray);
+		}
+
+		return 0;
+	}
+
+	// ポッドアップグレード
+	int PodUpgradeButton()
+	{
+
+		// 利用可能確認
+		if (point.getPoint() > 10)
+		{
+			// 明るく表示 使用できることを提示
+			pod_upgrade_button.draw(Palette::Skyblue);
+
+			//ボタンをマウス左クリック
+			if (pod_upgrade_button.mouseOver() && MouseL.down())
+			{
+				point.addPoint(-10);
+				action.PodUpgrade();
+			}
+
+		}
+
+
+		else
+		{
+			// 暗く表示 使用出来ないことの提示
+			pod_upgrade_button.draw(Palette::Lightgray);
+		}
+
+		return 0;
+	}
+
+
+	// プラントアップグレード
+	int PlantUpgradeButton()
+	{
+		// 利用可能確認
+		if (point.getPoint() > 10)
+		{
+			// 明るく表示 使用できることを提示
+			plant_upgrade_button.draw(Palette::Skyblue);
+
+			//ボタンをマウス左クリック
+			if (plant_upgrade_button.mouseOver() && MouseL.down())
+			{
+				point.addPoint(-10);
+				action.PlantUpgrafe();
+			}
+
+		}
+
+
+		else
+		{
+			// 暗く表示 使用出来ないことの提示
+			plant_upgrade_button.draw(Palette::Lightgray);
+		}
+
+		return 0;
+	}
+	// 電池ストック追加
+	int MaxButteryStockUpgrade()
+	{
+		// 利用可能確認
+		if (point.getPoint() > 10)
+		{
+			// 明るく表示 使用できることを提示
+			max_battery_stock_upgrade_button.draw(Palette::Skyblue);
+
+			//ボタンをマウス左クリック
+			if (max_battery_stock_upgrade_button.mouseOver() && MouseL.down())
+			{
+				point.addPoint(-10);
+				action.MaxBatteryStockUpgrade();
+			}
+
+		}
+
+
+		else
+		{
+			// 暗く表示 使用出来ないことの提示
+			max_battery_stock_upgrade_button.draw(Palette::Lightgray);
+		}
+
+		return 0;
+	}
 
 public:
 
@@ -110,7 +225,13 @@ public:
 	{
 		PointView();
 		ChargingPowerView();
+		BatteryStockView();
+		MaxBatteryStockView();
 		WaterringButton();
+		FertilizerButton();
+		PodUpgradeButton();
+		PlantUpgradeButton();
+		MaxButteryStockUpgrade();
 		return 0;
 	}
 

@@ -49,4 +49,14 @@ public:
 		return point;
 	}
 
+	// システム処理
+
+	//初期化
+	int Startup()
+	{
+		setPoint(0);
+
+		return 0;
+	}
+
 };

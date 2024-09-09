@@ -186,6 +186,8 @@ public:
 		return moment_power;
 	}
 
+	// システム処理
+
 	//初期化処理
 	int Startup()
 	{

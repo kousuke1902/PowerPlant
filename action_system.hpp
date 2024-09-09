@@ -37,7 +37,7 @@ public:
 	// 水やりを行う
 	int Watering()
 	{
-
+		// パーティクル
 		plant.addMoisture(10);
 		return 0;
 	}
@@ -45,7 +45,7 @@ public:
 	// 肥料を与える
 	int Fertilize()
 	{
-		point.addPoint(-10);
+		// パーティクル
 		plant.addFertilizer(10);
 		return 0;
 	}
