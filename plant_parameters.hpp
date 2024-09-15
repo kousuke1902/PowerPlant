@@ -192,6 +192,7 @@ public:
 	int Startup()
 	{
 		setMomentPower(10);
+		setTimePower(1);
 		return 0;
 	}
 

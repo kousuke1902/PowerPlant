@@ -25,11 +25,11 @@ private:
 	Font max_battery_stock_text{ FontMethod::MSDF, 60 }; // 最大電池ストック表記
 
 	// ボタン
-	RoundRect waterring_button{ Arg::center(400.0, 200.0), _BUTTON_SIZE_ , 5.0 }; // 水やりボタン
-	RoundRect fertilizer_button{ Arg::center(400.0, 300.0), _BUTTON_SIZE_ , 5.0 }; // 肥料ボタン
-	RoundRect pod_upgrade_button{ Arg::center(400.0, 400.0), _BUTTON_SIZE_ , 5.0 }; // ポッドアップグレードボタン
-	RoundRect plant_upgrade_button{ Arg::center(400.0, 500.0), _BUTTON_SIZE_ , 5.0 }; // プラントアップグレードボタン
-	RoundRect max_battery_stock_upgrade_button{ Arg::center(400.0, 600.0), _BUTTON_SIZE_ , 5.0 }; // 最大バッテリーアップグレードボタン
+	RoundRect waterring_button{ Arg::center(1000.0, 200.0), _BUTTON_SIZE_ , 5.0 }; // 水やりボタン
+	RoundRect fertilizer_button{ Arg::center(1000.0, 300.0), _BUTTON_SIZE_ , 5.0 }; // 肥料ボタン
+	RoundRect pod_upgrade_button{ Arg::center(1000.0, 400.0), _BUTTON_SIZE_ , 5.0 }; // ポッドアップグレードボタン
+	RoundRect plant_upgrade_button{ Arg::center(1000.0, 500.0), _BUTTON_SIZE_ , 5.0 }; // プラントアップグレードボタン
+	RoundRect max_battery_stock_upgrade_button{ Arg::center(1000.0, 600.0), _BUTTON_SIZE_ , 5.0 }; // 最大バッテリーアップグレードボタン
 
 	// 当たり判定
 	RoundRect plant_colision{ Arg::center(300.0, 600.0), 100.0, 500.0, 10 }; // 植物当たり判定
@@ -254,6 +254,10 @@ public:
 		PodUpgradeButton();
 		PlantUpgradeButton();
 		MaxButteryStockUpgrade();
+
+		// システム
+		TouchPlant();
+
 		return 0;
 	}
 
