@@ -4,6 +4,8 @@
 #include "battery_parameters.hpp"
 #include "point_parameters.hpp"
 
+#define _INTERVAL_TIME_ 60
+
 class ActionSystem final
 {
 private:
@@ -15,7 +17,7 @@ private:
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
 	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
 	bool timer_flag = true; // 実行可能な状態か
-
+	int mood_magnification; // 気分による倍率値
 
 
 public:
@@ -71,7 +73,7 @@ public:
 		if (battery.getMaxBatteryStock() != battery.getBatteryStock())
 		{
 			// 植物の瞬間発電量を充電する
-			battery.addChargingPower(plant.getMomentPower());
+			battery.addChargingPower(plant.getMomentPower() * plant.getMoodMagnification());
 		}
 
 		return 0;
@@ -80,8 +82,8 @@ public:
 	// 植物の時間発電
 	int TimePower()
 	{
-		// 15秒毎に実行する
-		if (Time::GetSecSinceEpoch() % 15 == 0 && timer_flag)
+		// x秒毎に実行する
+		if (Time::GetSecSinceEpoch() % _INTERVAL_TIME_ == 0 && timer_flag)
 		{
 			// 実行した
 			timer_flag = false;
@@ -96,7 +98,7 @@ public:
 		}
 
 		// フラグのリセット
-		else if (Time::GetSecSinceEpoch() % 15 == 1)
+		else if (Time::GetSecSinceEpoch() % _INTERVAL_TIME_ == 1)
 		{
 			// 未実行
 			timer_flag = true;

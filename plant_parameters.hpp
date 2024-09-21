@@ -18,6 +18,7 @@ private:
 	int plant_level; // 植物のレベル
 	int time_power; // 時間発電量
 	int moment_power;  // 瞬間発電量
+	int mood_magnification; // 気分による倍率値
 
 public:
 
@@ -93,7 +94,7 @@ public:
 	}
 
 	// 気分値の取得
-	int getMood(int x)
+	int getMood()
 	{
 		return mood;
 	}
@@ -186,15 +187,37 @@ public:
 		return moment_power;
 	}
 
+	// 気分倍率の取得
+	int getMoodMagnification()
+	{
+		return mood_magnification;
+	}
+
+
 	// システム処理
 
-	//初期化処理
+	// 初期化処理
 	int Startup()
 	{
+		setMood(0);
+		setPlantLevel(1);
 		setMomentPower(10);
 		setTimePower(1);
+		
+		MoodMagnificationUpdate();
 		return 0;
 	}
+
+	// 気分倍率の更新
+	int MoodMagnificationUpdate()
+	{
+		double ligand = Pow(getMood(), getPlantLevel()); // リガンド濃度
+		double dissociation = Pow(20, getPlantLevel()); // 解離定数
+
+		mood_magnification = int(ligand / (dissociation + ligand) * 10);
+		return 0;
+	}
+
 
 };
 
