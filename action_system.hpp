@@ -91,8 +91,22 @@ public:
 			// ストックが最大の場合，充電できない
 			if (battery.getMaxBatteryStock() != battery.getBatteryStock())
 			{
+
+				// 時間倍率
+				int timemagnification = plant.getTimePower();
+
+				// 土壌
+				// 乾燥，水浸し 0倍
+				if (plant.getMoisture() >= 90 || plant.getMoisture() < 40) timemagnification = 0;
+				// 湿潤
+				else if (plant.getMoisture() >= 75 && plant.getMoisture() < 90) timemagnification = plant.getTimePower() * 2;
+
+				// 肥料
+				// 肥料があれば2倍
+				if (plant.getFertilizer() > 0)timemagnification *= 2;
+
 				// 植物の時間発電量を充電する
-				battery.addChargingPower(plant.getTimePower());
+				battery.addChargingPower(timemagnification);
 			}
 
 		}

@@ -155,7 +155,7 @@ public:
 	// 時間発電量の加算
 	int addTimePower(int x)
 	{
-		time_power += 0;
+		time_power += x;
 		return 0;
 	}
 
@@ -199,6 +199,8 @@ public:
 	// 初期化処理
 	int Startup()
 	{
+		setMoisture(50);
+		setFertilizer(100);
 		setMood(0);
 		setPlantLevel(1);
 		setMomentPower(10);
