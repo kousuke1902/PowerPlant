@@ -35,7 +35,7 @@ public:
 	}
 
 	// 土壌
-
+	// 
 	// 土壌の湿り気数値を入力する
 	int setMoisture(int x)
 	{
@@ -57,7 +57,7 @@ public:
 	}
 
 	// 肥料
-
+	// 
 	// 肥料値を入力する
 	int setFertilizer(int x)
 	{
@@ -79,6 +79,7 @@ public:
 	}
 
 	// 気分
+	// 
 	// 気分値を入力する
 	int setMood(int x)
 	{
@@ -94,7 +95,7 @@ public:
 	}
 
 	// 気分値の取得
-	int getMood()
+	int getMood() const
 	{
 		return mood;
 	}
@@ -138,7 +139,7 @@ public:
 	}
 
 	// 植物レベルの取得
-	int getPlantLevel()
+	int getPlantLevel() const
 	{
 		return plant_level;
 	}
@@ -182,13 +183,13 @@ public:
 	}
 
 	// 瞬間発電量の取得
-	int getMomentPower()
+	int getMomentPower() const
 	{
 		return moment_power;
 	}
 
 	// 気分倍率の取得
-	int getMoodMagnification()
+	int getMoodMagnification() const
 	{
 		return mood_magnification;
 	}
@@ -201,7 +202,7 @@ public:
 	{
 		setMoisture(50);
 		setFertilizer(100);
-		setMood(0);
+		setMood(1);
 		setPlantLevel(1);
 		setMomentPower(10);
 		setTimePower(1);

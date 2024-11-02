@@ -4,6 +4,7 @@
 #include "action_system.hpp"
 #include "draw_system.hpp"
 #include "particle_system.hpp"
+#include "file_system.hpp"
 
 
 void Main()
@@ -27,5 +28,7 @@ void Main()
 		action.Update();
 		draw.Update();
 	}
+
+	GameFileSystem::getInstance().DataSave();
 }
 

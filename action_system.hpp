@@ -6,6 +6,7 @@
 
 #define _INTERVAL_TIME_ 60
 
+// ゲームでの計算とパラメータ操作のクラス
 class ActionSystem final
 {
 private:

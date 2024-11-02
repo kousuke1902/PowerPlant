@@ -6,6 +6,7 @@
 
 #define _BUTTON_SIZE_ Vec2{200.0, 50.0}
 
+// ゲームでの描画処理に関するクラス
 class DrawSystem final
 {
 
