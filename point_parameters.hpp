@@ -54,7 +54,7 @@ public:
 	//初期化
 	int Startup()
 	{
-		setPoint(100);
+		
 
 		return 0;
 	}

@@ -19,6 +19,8 @@ void Main()
 	ActionSystem& action = ActionSystem::getInstance();
 	DrawSystem& draw = DrawSystem::getInstance();
 
+	GameFileSystem::getInstance().DataLoad();
+
 	battery.Startup();
 	plant.Startup();
 	point.Startup();

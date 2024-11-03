@@ -200,10 +200,7 @@ public:
 	// 初期化処理
 	int Startup()
 	{
-		setMoisture(50);
-		setFertilizer(100);
-		setMood(1);
-		setPlantLevel(1);
+
 		setMomentPower(10);
 		setTimePower(1);
 		

@@ -47,7 +47,7 @@ public:
 	}
 
 	// 充電量を取得する
-	double getChargingPower() const
+	int getChargingPower() const
 	{
 		return charging_power;
 	}
@@ -101,9 +101,7 @@ public:
 	// 初期化
 	int Startup()
 	{
-		setChargingPower(0);
-		setBatteryStock(0);
-		setMaxBatteryStock(1);
+
 
 		return 0;
 	}

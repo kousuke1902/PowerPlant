@@ -60,4 +60,35 @@ public:
 		return 0;
 	}
 
+	// プレイデータの読取
+	int DataLoad()
+	{
+
+		// 読込先
+		JSON loaddata = JSON::Load(U"Data/AuditTrail.json");
+
+		// データの有無確認
+		if (not loaddata)return 0;
+		
+		// 植物パラメータ
+		plant.setMoisture(loaddata[U"Plant"][U"Moisture"].get<int32>());
+		plant.setFertilizer(loaddata[U"Plant"][U"Fertilizer"].get<int32>());
+		plant.setMood(loaddata[U"Plant"][U"Modo"].get<int32>());
+		plant.setPodLevel(loaddata[U"Plant"][U"PodLevel"].get<int32>());
+		plant.setPlantLevel(loaddata[U"Plant"][U"PlantLevel"].get<int32>());
+
+		// 電池パラメータ
+		battery.setChargingPower(loaddata[U"Battery"][U"ChargingPower"].get<int32>());
+		battery.setBatteryStock(loaddata[U"Battery"][U"Stock"].get<int32>());
+		battery.setMaxBatteryStock(loaddata[U"Battery"][U"MaxStock"].get<int32>());
+
+		// ポイント
+		point.setPoint(loaddata[U"Point"].get<int32>());
+
+		// 時間差分処理
+
+		return 0;
+
+	}
+
 };
