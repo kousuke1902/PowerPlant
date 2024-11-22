@@ -3,6 +3,7 @@
 #include "action_system.hpp"
 #include "battery_parameters.hpp"
 #include "point_parameters.hpp"
+#include "plant_draw.hpp"
 
 #define _BUTTON_SIZE_ Vec2{200.0, 50.0}
 
@@ -18,6 +19,7 @@ private:
 	ActionSystem& action = ActionSystem::getInstance(); // 操作クラスへのアクセス
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
 	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
+	PlantDraw& plant_draw = PlantDraw::getInstance(); // 植物描画クラスへのアクセス
 
 	// 表示
 	Font point_text{ FontMethod::MSDF, 60 }; // ポイント表記
@@ -40,28 +42,28 @@ private:
 	// ポイント表示
 	int PointView()
 	{
-		point_text(U"{:}"_fmt(point.getPoint())).draw(50, Arg::leftCenter(600.0, 100.0), Palette::Black);
+		point_text(U"{:}"_fmt(point.getPoint()),U"pt").draw(50, Arg::leftCenter(600.0, 100.0), Palette::Black);
 		return 0;
 	}
 
 	// 充電量表示
 	int ChargingPowerView()
 	{
-		charging_power_text(U"{:}"_fmt(battery.getChargingPower())).draw(50, Arg::leftCenter(600.0, 200.0), Palette::Black);
+		charging_power_text(U"{:}"_fmt(battery.getChargingPower()),U"mA").draw(50, Arg::leftCenter(600.0, 200.0), Palette::Black);
 		return 0;
 	}
 
 	// 電池ストック表示
 	int BatteryStockView()
 	{
-		battery_stock_text(U"{:}"_fmt(battery.getBatteryStock())).draw(50, Arg::leftCenter(600.0, 300.0), Palette::Black);
+		battery_stock_text(U"{:}"_fmt(battery.getBatteryStock()),U"本").draw(50, Arg::leftCenter(600.0, 300.0), Palette::Black);
 		return 0;
 	}
 
 	//最大電池ストック表示
 	int MaxBatteryStockView()
 	{
-		max_battery_stock_text(U"{:}"_fmt(battery.getMaxBatteryStock())).draw(50, Arg::leftCenter(600.0, 400.0), Palette::Black);
+		max_battery_stock_text(U"最大", U"{:}"_fmt(battery.getMaxBatteryStock()),U"本").draw(50, Arg::leftCenter(600.0, 400.0), Palette::Black);
 		return 0;
 	}
 
@@ -220,6 +222,8 @@ private:
 
 		}
 
+		plant_draw.Draw();
+
 		return 0;
 	}
 
@@ -253,7 +257,7 @@ public:
 		WaterringButton();
 		FertilizerButton();
 		PodUpgradeButton();
-		PlantUpgradeButton();
+		// PlantUpgradeButton();
 		MaxButteryStockUpgrade();
 
 		// システム

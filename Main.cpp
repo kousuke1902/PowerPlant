@@ -3,6 +3,7 @@
 #include "battery_parameters.hpp"
 #include "action_system.hpp"
 #include "draw_system.hpp"
+#include "plant_draw.hpp"
 #include "particle_system.hpp"
 #include "file_system.hpp"
 
@@ -24,6 +25,7 @@ void Main()
 	battery.Startup();
 	plant.Startup();
 	point.Startup();
+	PlantDraw::getInstance().StartUp();
 
 	while (System::Update())
 	{

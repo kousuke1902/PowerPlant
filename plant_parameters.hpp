@@ -213,8 +213,8 @@ public:
 	{
 		double ligand = Pow(getMood(), getPlantLevel()); // リガンド濃度
 		double dissociation = Pow(20, getPlantLevel()); // 解離定数
-
-		mood_magnification = int(ligand / (dissociation + ligand) * 10);
+		
+		mood_magnification = Ceil(ligand / (dissociation + ligand) * 10.0);
 		return 0;
 	}
 

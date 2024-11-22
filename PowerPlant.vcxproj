@@ -330,6 +330,7 @@
     <ClInclude Include="draw_system.hpp" />
     <ClInclude Include="file_system.hpp" />
     <ClInclude Include="particle_system.hpp" />
+    <ClInclude Include="plant_draw.hpp" />
     <ClInclude Include="plant_parameters.hpp" />
     <ClInclude Include="point_parameters.hpp" />
     <ClInclude Include="stdafx.h" />

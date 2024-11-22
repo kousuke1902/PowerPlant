@@ -71,7 +71,7 @@ public:
 	int TouchPlant()
 	{
 		// ストックが最大の場合，充電できない
-		if (battery.getMaxBatteryStock() != battery.getBatteryStock())
+		if (battery.getMaxBatteryStock() > battery.getBatteryStock())
 		{
 			// 植物の瞬間発電量を充電する
 			battery.addChargingPower(plant.getMomentPower() * plant.getMoodMagnification());

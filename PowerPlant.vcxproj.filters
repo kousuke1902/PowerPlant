@@ -830,5 +830,8 @@
     <ClInclude Include="file_system.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="plant_draw.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
