@@ -833,5 +833,11 @@
     <ClInclude Include="plant_draw.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="button_draw.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="deltatime.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

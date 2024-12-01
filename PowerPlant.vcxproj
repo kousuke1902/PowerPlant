@@ -327,6 +327,8 @@
   <ItemGroup>
     <ClInclude Include="action_system.hpp" />
     <ClInclude Include="battery_parameters.hpp" />
+    <ClInclude Include="button_draw.hpp" />
+    <ClInclude Include="deltatime.hpp" />
     <ClInclude Include="draw_system.hpp" />
     <ClInclude Include="file_system.hpp" />
     <ClInclude Include="particle_system.hpp" />
