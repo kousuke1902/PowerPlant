@@ -7,13 +7,13 @@ private:
 
 
 
-	Texture button_off; // ボタンを押下
-	Texture button_on; // ボタン押下前
+	Texture purchase_button_off; // 購入ボタンを押下
+	Texture purchase_button_on; // 購入ボタン押下前
 
 	ButtonDraw() = default; // コンストラクタ
 	~ButtonDraw() = default; // デストラクタ
 
-	RoundRect button_colision; // ボタン当たり判定
+	Array<RoundRect> purchase_button_colision; // 購入ボタン当たり判定
 	
 
 public:
@@ -31,12 +31,23 @@ public:
 	}
 
 	// 描画
-	bool Draw(int x, int y)
+	int Draw(size_t id)
 	{
-		button_colision.x = x;
-		button_colision.y = y;
 
-		button_colision.draw();
+		purchase_button_on.draw(purchase_button_colision[id].x, purchase_button_colision[id].y);
+
+		return 0;
+	}
+
+	// 当たり判定
+	bool Colision(size_t id)
+	{
+		if (purchase_button_colision.size() > id)
+		{
+			// purchase_button_colision[id].draw();
+
+			return purchase_button_colision[id].mouseOver();
+		}
 
 		return false;
 	}
@@ -46,13 +57,19 @@ public:
 	// 初期化
 	int StartUp()
 	{
-		Image img_off,img_on;
+		Image img_off{ U"Data/button0.svg" }, img_on{ U"Data/button1.svg" };
 
 		// 画像読み込み
-		button_off = Texture{ img_off.scaled(0.4), TextureDesc::Mipped };
-		button_on = Texture{ img_on.scaled(0.4), TextureDesc::Mipped };
+		purchase_button_off = Texture{ img_off.scaled(0.4), TextureDesc::Mipped };
+		purchase_button_on = Texture{ img_on.scaled(0.4), TextureDesc::Mipped };
 
-		button_colision = RoundRect{ Arg::center(400,300), 300, 50, 5 };
+		// 購入各ボタン 水やり，肥料，ポッド，電池ストック，出荷
+		for (int time = 0; time < 5; ++time)
+		{
+			purchase_button_colision << RoundRect{ Arg::center(1000,200 + 100 * time), 230, 64, 5 };
+		}
+		
+
 
 		return 0;
 	}

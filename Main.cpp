@@ -26,6 +26,7 @@ void Main()
 	plant.Startup();
 	point.Startup();
 	PlantDraw::getInstance().StartUp();
+	ButtonDraw::getInstance().StartUp();
 
 	while (System::Update())
 	{

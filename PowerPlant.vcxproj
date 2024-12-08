@@ -335,6 +335,7 @@
     <ClInclude Include="plant_draw.hpp" />
     <ClInclude Include="plant_parameters.hpp" />
     <ClInclude Include="point_parameters.hpp" />
+    <ClInclude Include="startup_system.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

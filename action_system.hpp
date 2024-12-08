@@ -3,6 +3,8 @@
 #include "plant_parameters.hpp"
 #include "battery_parameters.hpp"
 #include "point_parameters.hpp"
+#include "plant_draw.hpp"
+#include "button_draw.hpp"
 
 #define _INTERVAL_TIME_ 60
 
@@ -17,6 +19,8 @@ private:
 	PlantParameters& plant = PlantParameters::getInstance(); // 植物クラスへのアクセス 
 	BatteryParameters& battery = BatteryParameters::getInstance(); // 電池クラスへのアクセス
 	PointParameters& point = PointParameters::getInstance(); // ポイントクラスへのアクセス
+	PlantDraw& plant_draw = PlantDraw::getInstance(); // 植物描画クラスへのアクセス
+	ButtonDraw& button_draw = ButtonDraw::getInstance(); // ボタン描画クラスへのアクセス
 	bool timer_flag = true; // 実行可能な状態か
 	int mood_magnification; // 気分による倍率値
 
@@ -41,7 +45,18 @@ public:
 	int Watering()
 	{
 		// パーティクル
-		plant.addMoisture(10);
+
+		// ボタン判定処理
+		// 利用可能確認
+		if (point.getPoint() >= 10)
+		{
+			// ボタンをマウス左クリック id=0
+			if (button_draw.Colision(0) && MouseL.down())
+			{
+				point.addPoint(-10);
+				plant.addMoisture(10);
+			}
+		}
 		return 0;
 	}
 
@@ -49,14 +64,35 @@ public:
 	int Fertilize()
 	{
 		// パーティクル
-		plant.addFertilizer(10);
+
+		// ボタン判定処理
+		// 利用可能確認
+		if (point.getPoint() >= 10)
+		{
+			// ボタンをマウス左クリック id=1
+			if (button_draw.Colision(1) && MouseL.down())
+			{
+				point.addPoint(-10);
+				plant.addFertilizer(10);
+			}
+		}		
 		return 0;
 	}
 
 	// ポッドのレベルを上げる
 	int PodUpgrade()
 	{
-		plant.addPodLevel();
+		// ボタン判定処理
+		// 利用可能確認
+		if (point.getPoint() >= 10)
+		{
+			// ボタンをマウス左クリック id=2
+			if (button_draw.Colision(2) && MouseL.down())
+			{
+				point.addPoint(-10);
+				plant.addPodLevel();
+			}
+		}
 		return 0;
 	}
 
@@ -70,13 +106,17 @@ public:
 	// 植物をタッチする
 	int TouchPlant()
 	{
-		// ストックが最大の場合，充電できない
-		if (battery.getMaxBatteryStock() > battery.getBatteryStock())
+		// 判定
+		if (plant_draw.Colision() && MouseL.down())
 		{
-			// 植物の瞬間発電量を充電する
-			battery.addChargingPower(plant.getMomentPower() * plant.getMoodMagnification());
-		}
+			// ストックが最大の場合，充電できない
+			if (battery.getMaxBatteryStock() > battery.getBatteryStock())
+			{
+				// 植物の瞬間発電量を充電する
+				battery.addChargingPower(plant.getMomentPower() * plant.getMoodMagnification());
+			}
 
+		}
 		return 0;
 	}
 
@@ -129,14 +169,34 @@ public:
 	// 最大電池ストックを引き上げる
 	int MaxBatteryStockUpgrade()
 	{
-		battery.addMaxBatteryStock();
+		// ボタン判定処理
+		// 利用可能確認
+		if (point.getPoint() >= 10)
+		{
+			// ボタンをマウス左クリック id=3
+			if (button_draw.Colision(3) && MouseL.down())
+			{
+				point.addPoint(-10);
+				battery.addMaxBatteryStock();
+			}
+		}
 		return 0;
 	}
 
 	// 電池を出荷する
 	int BatteryShipping()
 	{
-		battery.setBatteryStock(0);
+		// ボタン判定処理
+		// 利用可能確認
+		if (point.getPoint() >= 10)
+		{
+			// ボタンをマウス左クリック id=4
+			if (button_draw.Colision(4) && MouseL.down())
+			{
+				point.addPoint(10); // ポイント加算
+				battery.setBatteryStock(0); // リセット
+			}
+		}
 		return 0;
 	}
 
@@ -165,6 +225,12 @@ public:
 		// 定期処理
 		TimePower();
 		BatteryChargingCheck();
+		Watering();
+		Fertilize();
+		PodUpgrade();
+		MaxBatteryStockUpgrade();
+		BatteryShipping();
+		TouchPlant();
 		return 0;
 	}
 
